@@ -1,6 +1,6 @@
 # Teste Frontend Plan Marketing
 
-Deploy disponível no link: **[plan-frontend-test](https://plan-frontend-test-iqiwhp6q3-wbartz-projects.vercel.app/)**
+Deploy disponível no link: **[plan-frontend-test](https://plan-frontend-test-mocha.vercel.app/)**
 
 ## Como executar local
 

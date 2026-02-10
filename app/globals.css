@@ -19,9 +19,67 @@
 }
 
 body {
+  /* Mantemos largura máxima, mas permitimos rolagem para que a scrollbar apareça */
   @apply max-w-screen max-h-screen overflow-hidden;
 }
 
 .bg-orange-gradient {
   @apply bg-[radial-gradient(circle_at_center,#FFD36A_0%,#FFB347_40%,#FF8C1A_70%,#F97316_100%)];
+}
+
+/* Scrollbar customizada usando as cores do projeto */
+:root {
+  /* variáveis auxiliares para estilos da scrollbar */
+  --scrollbar-track: var(--background);
+  --scrollbar-thumb: var(--primary);
+  --scrollbar-thumb-hover: #d96f12; /* tom um pouco mais escuro do primary */
+}
+
+/* WebKit browsers (Chrome, Safari, Edge) */
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 9999px;
+  border: 3px solid var(--scrollbar-track); /* cria espaço interno para dar aparência de trilho */
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* Classe utilitária caso queira aplicar scrollbar custom somente em containers específicos */
+.scrollbar-custom {
+  scrollbar-width: thin;
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 9999px;
+  border: 3px solid var(--scrollbar-track);
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
 }

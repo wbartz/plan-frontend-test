@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Exo } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/Header'
+import { Footer } from '@/components/Footer'
 
 const fontDefault = Exo({
   variable: '--font-exo',
@@ -21,11 +22,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${fontDefault.variable} bg-orange-gradient`}>
+      <body
+        className={`${fontDefault.variable} bg-orange-gradient min-h-screen flex flex-col`}
+      >
         <Header />
-        <div className="max-w-screen mx-auto px-12 py-6 lg:py-8">
+        <main className="flex-1 max-w-screen mx-auto px-12 py-6 lg:py-8 overflow-auto">
           {children}
-        </div>
+        </main>
+        <Footer />
       </body>
     </html>
   )

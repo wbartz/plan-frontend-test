@@ -5,10 +5,10 @@ export default async function Home() {
   const countries = await getCountries()
 
   return (
-    <main className="flex gap-8 flex-wrap">
+    <div className="flex gap-8 flex-wrap">
       {countries?.map((country) => (
         <CountryCard key={country.name.common} country={country} />
       ))}
-    </main>
+    </div>
   )
 }

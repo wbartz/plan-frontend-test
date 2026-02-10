@@ -13,7 +13,6 @@ export function CountryCard({
 }: {
   country: CountryPicker<typeof countryFields>
 }) {
-  console.log(country)
   return (
     <Card key={country.name.common}>
       <CardHeader

@@ -1,3 +1,4 @@
+import { Continent, Continents } from '@/types'
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
@@ -5,7 +6,14 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function getContinentName(code: string) {
+export function getContinentName(code: string): Continent {
+  const continent = Continents.find(
+    (c) => c.value.toLowerCase() === getUrlName(code),
+  )
+  return continent || { label: code, value: getUrlName(code) }
+}
+
+export function getUrlName(code: string) {
   return String(code).toLowerCase().replace(/\s+/g, '-')
 }
 

@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/Button'
 import { Card, CardContent, CardHeader } from '@/components/Card'
-import { getContinentName, getCountryName } from '@/lib/utils'
+import { getUrlName, getContinentName } from '@/lib/utils'
 import { countryFields } from '@/types'
 import { CountryPicker } from '@yusifaliyevpro/countries/types'
 import Image from 'next/image'
@@ -17,12 +17,10 @@ export function CountryCard({
   return (
     <Card key={country.name.common}>
       <CardHeader
-        title={getCountryName(
-          country.translations.por?.common || country.name.common,
-        )}
+        title={getContinentName(country.continents[0]).label}
         // eslint-disable-next-line @typescript-eslint/no-require-imports
         icon={require(
-          `@/assets/images/${getContinentName(country.continents[0])}.png`,
+          `@/assets/images/${getContinentName(country.continents[0]).value}.png`,
         )}
       />
       <CardContent className="flex flex-col items-center gap-4">
@@ -39,7 +37,7 @@ export function CountryCard({
         </div>
         <Button
           onClick={() =>
-            redirect(`/detalhes/${getContinentName(country.name.common)}`)
+            redirect(`/detalhes/${getUrlName(country.name.common)}`)
           }
         >
           Ver mais

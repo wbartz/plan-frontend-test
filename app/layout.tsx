@@ -3,6 +3,7 @@ import { Exo } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { NuqsAdapter } from 'nuqs/adapters/next'
 
 const fontDefault = Exo({
   variable: '--font-exo',
@@ -11,7 +12,7 @@ const fontDefault = Exo({
 })
 
 export const metadata: Metadata = {
-  title: 'Plan Marketing',
+  title: 'Plan Marketing - Countries',
   description: 'Teste frontend',
 }
 
@@ -29,11 +30,13 @@ export default function RootLayout({
       <body
         className={`${fontDefault.variable} bg-orange-gradient min-h-screen flex flex-col`}
       >
-        <Header />
-        <main className="flex-1 max-w-screen mx-auto px-12 py-6 lg:py-8 overflow-auto">
-          {children}
-        </main>
-        <Footer />
+        <NuqsAdapter defaultOptions={{ shallow: false }}>
+          <Header />
+          <main className="flex-1 max-w-screen mx-auto px-12 py-6 lg:py-8 overflow-auto">
+            {children}
+          </main>
+          <Footer />
+        </NuqsAdapter>
       </body>
     </html>
   )

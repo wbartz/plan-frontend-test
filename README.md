@@ -15,3 +15,5 @@ npm run dev
 * **[clsx](https://www.npmjs.com/package/clsx)** - Para facilitar o uso condicional de classes nos componentes
 * **[tailwind-merge](https://www.npmjs.com/package/tailwind-merge)** - Facilita o merge entre classes tailwind e evitar conflitos entre elas.
 * **[base-ui](https://base-ui.com/)** - Facilita a criação de componentes.
+* **[@yusifaliyevpro/countries](https://github.com/yusifaliyevpro/countries)** - Wrapper da API restcountries com tipagem para Typescript
+* **[nuqs]()** - Para gerenciar o estado através da URL, isso permite que ao atualizar a página seja mantido exatamente o estado atual da busca

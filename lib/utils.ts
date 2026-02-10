@@ -34,5 +34,7 @@ export function withPagination<T>(
   const p = Math.max(1, Math.floor(Number(page) || 1))
   const start = (p - 1) * perPage
 
-  return countries.slice(start, start + perPage)
+  const list = countries.slice(start, start + perPage)
+
+  return { countries: list, totalPages: Math.ceil(countries.length / perPage) }
 }

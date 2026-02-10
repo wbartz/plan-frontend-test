@@ -22,6 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+      </head>
       <body
         className={`${fontDefault.variable} bg-orange-gradient min-h-screen flex flex-col`}
       >

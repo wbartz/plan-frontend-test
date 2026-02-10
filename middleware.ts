@@ -9,7 +9,7 @@ export const config = {
      * 3. /_static (inside /public)
      * 4. all root files inside /public (e.g. /favicon.ico)
      */
-    `/((?!api/|favicon.ico|logo.png|empty-state.png|placeholder.png|_next/|_static/|_vercel|[\w-]+\.\w+).*)`,
+    `/((?!api/|favicon.png|_next/|_static/|_vercel|[\w-]+\.\w+).*)`,
   ],
 }
 

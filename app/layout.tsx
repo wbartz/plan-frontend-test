@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         <NuqsAdapter defaultOptions={{ shallow: false }}>
           <Header />
-          <main className="flex-1 max-w-screen mx-auto px-8 lg:px-12 py-4 lg:py-8 overflow-auto">
+          <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 lg:px-12 py-4 lg:py-8 overflow-auto pt-24 sm:pt-28">
             {children}
           </main>
           <Footer />

@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/Button'
-import { Card, CardContent, CardHeader } from '@/components/Card'
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/Card'
 import { getUrlName, getContinentName, getCountryName } from '@/lib/utils'
 import useCountriesDataStore from '@/store'
 import Image from 'next/image'
@@ -16,7 +16,7 @@ export function CountriesList() {
     .getFiltered({ page, continent }).items
 
   return (
-    <div className="flex gap-6 flex-wrap">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {countries?.map((country: any) => (
         <Card key={country.name.common}>
           <CardHeader
@@ -26,7 +26,7 @@ export function CountriesList() {
               `@/assets/images/${getContinentName(country.continents[0]).value}.png`,
             )}
           />
-          <CardContent className="flex flex-col items-center gap-4">
+          <CardContent className="flex flex-col items-center gap-4 flex-1 border-red-500">
             <div className="flex items-center flex-col px-6">
               <Image
                 src={country.flags.svg}
@@ -34,12 +34,14 @@ export function CountriesList() {
                 width={24}
                 height={18}
               />
-              <p className="font-bold text-[23px] text-secondary mt-2 text-center w-77.5">
+              <p className="font-bold text-lg sm:text-xl text-secondary mt-2 text-center">
                 {getCountryName(
                   country.translations.por?.common || country.name.common,
                 )}
               </p>
             </div>
+          </CardContent>
+          <CardFooter className="flex justify-end">
             <Button
               onClick={() =>
                 redirect(`/detalhes/${getUrlName(country.name.common)}`)
@@ -47,7 +49,7 @@ export function CountriesList() {
             >
               Ver mais
             </Button>
-          </CardContent>
+          </CardFooter>
         </Card>
       ))}
     </div>

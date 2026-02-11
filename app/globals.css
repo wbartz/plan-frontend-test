@@ -19,8 +19,8 @@
 }
 
 body {
-  /* Mantemos largura máxima, mas permitimos rolagem para que a scrollbar apareça */
-  @apply overflow-hidden;
+  /* Permitir rolagem e aplicar estilos base responsivos */
+  @apply max-w-screen antialiased;
 }
 
 .bg-orange-gradient {

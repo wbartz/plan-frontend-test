@@ -13,7 +13,7 @@ export function CountriesList() {
   const countries = useCountriesDataStore.getState().getFiltered({ page }).items
 
   return (
-    <div className="flex gap-8 flex-wrap">
+    <div className="flex gap-6 flex-wrap">
       {countries?.map((country: any) => (
         <Card key={country.name.common}>
           <CardHeader

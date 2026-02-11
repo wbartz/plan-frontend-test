@@ -11,8 +11,8 @@ const Header = () => {
   const pathname = usePathname()
 
   return (
-    <header className="flex z-20 shrink-0 items-center justify-between gap-2 transition-[width,height] ease-linear">
-      <div className="flex items-center px-17.5 mt-15">
+    <header className="fixed top-0 left-0 right-0 z-50 flex shrink-0 items-center justify-between gap-2 bg-primary/80 xl:bg-transparent">
+      <div className="flex items-center px-4 mt-8 md:px-13 md:mt-12">
         <Image src={LogoPlan} alt="Plan Marketing" width={108} height={59} />
 
         {pathname === '/' && (

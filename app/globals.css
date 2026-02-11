@@ -20,7 +20,7 @@
 
 body {
   /* Mantemos largura máxima, mas permitimos rolagem para que a scrollbar apareça */
-  @apply max-w-screen max-h-screen overflow-hidden;
+  @apply overflow-hidden;
 }
 
 .bg-orange-gradient {

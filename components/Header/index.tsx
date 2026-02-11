@@ -39,7 +39,7 @@ const Header = () => {
         <Image
           src={LogoPlan}
           alt="Plan Marketing"
-          className="mt-8 md:mt-12"
+          className=""
           width={108}
           height={59}
           defaultValue={name}
@@ -58,10 +58,10 @@ const Header = () => {
         />
 
         {pathname === '/' && (
-          <div className="w-screen flex flex-col justify-center items-center">
-            <div className="flex max-w-2xl w-screen flex-col mt-5 lg:mt-0 lg:flex-row gap-4 justify-center mb-3">
+          <div className="w-screen flex flex-col">
+            <div className="flex w-full lg:max-w-9/12 flex-col mt-5 lg:mt-0 lg:flex-row ml-6 gap-3 lg:gap-6 justify-center mb-3">
               {/* Campo de busca */}
-              <div className="relative w-1/2">
+              <div className="relative w-9/12 lg:w-6/12">
                 <Input
                   type="text"
                   placeholder="Informe o país que deseja conhecer..."
@@ -83,7 +83,7 @@ const Header = () => {
               </div>
 
               {/* Seletor de idioma */}
-              <div className="w-1/2">
+              <div className="w-9/12 lg:w-6/12">
                 <Select
                   defaultValue={language}
                   onValueChange={(value) => {
@@ -106,11 +106,33 @@ const Header = () => {
               </div>
             </div>
 
-            <div className="w-screen max-w-md lg:max-w-6xl flex items-center gap-2">
+            <div className="w-full max-w-9/12 block xl:hidden ml-6 mb-3">
+              <Select
+                defaultValue={currentContinent}
+                onValueChange={(value) => {
+                  setPage(1)
+                  setContinent(value)
+                }}
+              >
+                <SelectTrigger className="w-full text-base border-2 border-white">
+                  <SelectValue placeholder="Selecione o continente" />
+                </SelectTrigger>
+                <SelectContent className="bg-primary rounded-lg border-2 border-white max-h-90">
+                  <SelectItem value="">Todos</SelectItem>
+                  {Continents.map((continent) => (
+                    <SelectItem key={continent.value} value={continent.value}>
+                      {continent.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="w-screen max-w-6xl ml-6 justify-start hidden xl:flex">
               {Continents.map((continent) => (
                 <FieldGroup
                   key={continent.value}
-                  className="gap-2 inline-flex items-center"
+                  className="gap-2 min-w-fit items-center"
                 >
                   <Field
                     orientation="horizontal"

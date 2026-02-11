@@ -35,7 +35,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex shrink-0 items-center justify-between gap-2 bg-primary/80 xl:bg-transparent">
-      <div className="flex items-center px-4 md:px-13">
+      <div className="flex items-center px-4 md:px-13 mt-0 xl:mt-4">
         <Image
           src={LogoPlan}
           alt="Plan Marketing"

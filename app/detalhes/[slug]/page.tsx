@@ -15,10 +15,8 @@ export default async function Page({
 }) {
   const { slug } = await params
   const country = await getCountry(slug)
-  console.log(country)
-  if (!country) return notFound()
 
-  console.log(country.capital)
+  if (!country) return notFound()
 
   return (
     <div className="flex flex-col mt-6 lg:mt-24 mx-auto w-full">

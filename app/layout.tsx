@@ -4,6 +4,7 @@ import './globals.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { NuqsAdapter } from 'nuqs/adapters/next'
+import { Suspense } from 'react'
 
 const fontDefault = Exo({
   variable: '--font-exo',
@@ -30,13 +31,15 @@ export default function RootLayout({
       <body
         className={`${fontDefault.variable} bg-orange-gradient min-h-screen flex flex-col`}
       >
-        <NuqsAdapter defaultOptions={{ shallow: false }}>
-          <Header />
-          <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 lg:px-12 py-4 lg:py-8 overflow-auto pt-24 sm:pt-28">
-            {children}
-          </main>
-          <Footer />
-        </NuqsAdapter>
+        <Suspense>
+          <NuqsAdapter>
+            <Header />
+            <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 lg:px-12 py-4 lg:py-8 overflow-auto pt-24 sm:pt-28">
+              {children}
+            </main>
+            <Footer />
+          </NuqsAdapter>
+        </Suspense>
       </body>
     </html>
   )

@@ -27,6 +27,7 @@ type CountriesDataStore = {
     totalItems: number
     page: number
   }
+  getAllLanguages: () => string[]
 }
 
 function matchesFilter(country: any, params: Filters) {
@@ -90,6 +91,19 @@ export const useCountriesDataStore = create<CountriesDataStore>()(
         const start = (page - 1) * perPage
         const items = filtered.slice(start, start + perPage)
         return { items, totalPages, totalItems, page }
+      },
+
+      getAllLanguages() {
+        const all = get().all || []
+        const langs = new Set<string>()
+        for (const c of all) {
+          const values = Object.values((c as any).languages || {})
+          for (const v of values) {
+            const s = String(v || '').trim()
+            if (s) langs.add(s)
+          }
+        }
+        return Array.from(langs).sort((a, b) => a.localeCompare(b))
       },
     }),
     {

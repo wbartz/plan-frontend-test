@@ -10,8 +10,9 @@ export default async function Home() {
     <div className="flex flex-col mt-6 lg:mt-24 mx-auto w-full">
       <CountriesProvider initialItems={countries}>
         <div className="flex flex-col justify-around mx-auto">
-          <CountriesList />
-
+          <div className="w-screen h-screen max-h-130 flex justify-center items-center">
+            <CountriesList />
+          </div>
           <Pagination />
         </div>
       </CountriesProvider>

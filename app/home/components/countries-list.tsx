@@ -2,15 +2,18 @@
 
 import { Button } from '@/components/Button'
 import { Card, CardContent, CardHeader } from '@/components/Card'
-import { getUrlName, getContinentName } from '@/lib/utils'
+import { getUrlName, getContinentName, getCountryName } from '@/lib/utils'
 import useCountriesDataStore from '@/store'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
-import { parseAsInteger, useQueryState } from 'nuqs'
+import { parseAsInteger, parseAsString, useQueryState } from 'nuqs'
 
 export function CountriesList() {
   const [page] = useQueryState('page', parseAsInteger.withDefault(1))
-  const countries = useCountriesDataStore.getState().getFiltered({ page }).items
+  const [continent] = useQueryState('continent', parseAsString.withDefault(''))
+  const countries = useCountriesDataStore
+    .getState()
+    .getFiltered({ page, continent }).items
 
   return (
     <div className="flex gap-6 flex-wrap">
@@ -31,8 +34,10 @@ export function CountriesList() {
                 width={24}
                 height={18}
               />
-              <p className="font-bold text-[23px] text-secondary mt-2 text-center">
-                {country.translations.por?.common || country.name.common}
+              <p className="font-bold text-[23px] text-secondary mt-2 text-center w-77.5">
+                {getCountryName(
+                  country.translations.por?.common || country.name.common,
+                )}
               </p>
             </div>
             <Button

@@ -6,8 +6,13 @@ import { Continents } from '@/types'
 import { Checkbox } from '@/components/Checkbox'
 import { Field, FieldGroup } from '../Field'
 import { usePathname } from 'next/navigation'
+import { parseAsString, useQueryState } from 'nuqs'
 
 const Header = () => {
+  const [currentContinent, setContinent] = useQueryState(
+    'continent',
+    parseAsString.withDefault(''),
+  )
   const pathname = usePathname()
 
   return (
@@ -30,6 +35,10 @@ const Header = () => {
                     <Checkbox
                       id={continent.value}
                       key={continent.value}
+                      checked={continent.value === currentContinent}
+                      onCheckedChange={(checked) =>
+                        setContinent(checked ? continent.value : '')
+                      }
                       className="w-6 h-6 shrink-0"
                     />
                     <label

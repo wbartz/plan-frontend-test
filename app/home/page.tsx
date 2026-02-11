@@ -6,11 +6,13 @@ import CountriesProvider from '@/components/Providers'
 export default async function Home() {
   const countries = await getCountries()
   return (
-    <div className="flex flex-col mt-23 lg:mt-20">
+    <div className="flex flex-col mt-23 lg:mt-20 mx-auto">
       <CountriesProvider initialItems={countries}>
-        <CountriesList />
+        <div className="flex flex-col justify-around border mx-auto border-red-500">
+          <CountriesList />
 
-        <Pagination />
+          <Pagination />
+        </div>
       </CountriesProvider>
     </div>
   )

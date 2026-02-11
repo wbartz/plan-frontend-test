@@ -2,12 +2,17 @@
 
 import { HugeiconsIcon } from '@hugeicons/react'
 import { ArrowLeft01Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons'
-import { parseAsInteger, useQueryState } from 'nuqs'
+import { parseAsInteger, parseAsString, useQueryState } from 'nuqs'
 import useCountriesDataStore from '@/store'
 
 export function Pagination() {
   const [page, setPage] = useQueryState('page', parseAsInteger.withDefault(1))
-  const totalPages = useCountriesDataStore.getState().getTotalPages()
+  const [continent] = useQueryState('continent', parseAsString.withDefault(''))
+  const [language] = useQueryState('language', parseAsString.withDefault(''))
+  const [name] = useQueryState('name', parseAsString.withDefault(''))
+  const totalPages = useCountriesDataStore
+    .getState()
+    .getFiltered({ page, continent, language, name }).totalPages
 
   const prevPage = () => setPage(Math.max(1, page - 1))
   const nextPage = () => setPage(Math.min(totalPages, page + 1))

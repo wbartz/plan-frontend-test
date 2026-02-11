@@ -3,13 +3,11 @@
 import { HugeiconsIcon } from '@hugeicons/react'
 import { ArrowLeft01Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons'
 import { parseAsInteger, useQueryState } from 'nuqs'
+import useCountriesDataStore from '@/store'
 
-type PaginationProps = {
-  totalPages: number
-}
-
-export function Pagination({ totalPages }: PaginationProps) {
+export function Pagination() {
   const [page, setPage] = useQueryState('page', parseAsInteger.withDefault(1))
+  const totalPages = useCountriesDataStore.getState().getTotalPages()
 
   const prevPage = () => setPage(Math.max(1, page - 1))
   const nextPage = () => setPage(Math.min(totalPages, page + 1))

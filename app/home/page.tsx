@@ -1,18 +1,18 @@
 import { getCountries } from '@/server/actions'
+import { CountriesList } from './components/countries-list'
 import { Pagination } from '@/components/Pagination'
-import { CountryCard } from './components/country-card'
+import CountriesProvider from '@/components/Providers'
 
 export default async function Home() {
-  const { countries, totalPages } = await getCountries()
+  const countries = await getCountries()
 
   return (
     <div className="flex flex-col">
-      <div className="flex gap-8 flex-wrap">
-        {countries?.map((country: any) => (
-          <CountryCard key={country.name.common} country={country} />
-        ))}
-      </div>
-      <Pagination totalPages={totalPages} />
+      <CountriesProvider initialItems={countries}>
+        <CountriesList />
+
+        <Pagination />
+      </CountriesProvider>
     </div>
   )
 }

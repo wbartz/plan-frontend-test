@@ -1,6 +1,7 @@
 import { countryFields } from '@/types'
 import { CountryPicker } from '@yusifaliyevpro/countries/types'
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
 export type Filters = {
   page?: number
@@ -56,38 +57,46 @@ function matchesFilter(country: any, params: Filters) {
   return true
 }
 
-export const useCountriesDataStore = create<CountriesDataStore>((set, get) => ({
-  all: [],
-  perPage: 8,
+export const useCountriesDataStore = create<CountriesDataStore>()(
+  persist(
+    (set, get) => ({
+      all: [],
+      perPage: 8,
 
-  setAll(items: any[]) {
-    set({ all: Array.isArray(items) ? items : [] })
-  },
+      setAll(items: any[]) {
+        set({ all: Array.isArray(items) ? items : [] })
+      },
 
-  clearAll() {
-    set({ all: [] })
-  },
+      clearAll() {
+        set({ all: [] })
+      },
 
-  getFullList() {
-    return get().all
-  },
+      getFullList() {
+        return get().all
+      },
 
-  getTotalPages(perPage?: number) {
-    const p = perPage ?? get().perPage
-    const total = Math.max(0, get().all.length)
-    return Math.max(1, Math.ceil(total / p))
-  },
+      getTotalPages(perPage?: number) {
+        const p = perPage ?? get().perPage
+        const total = Math.max(0, get().all.length)
+        return Math.max(1, Math.ceil(total / p))
+      },
 
-  getFiltered(params: Filters) {
-    const page = Math.max(1, Math.floor(Number(params.page) || 1))
-    const perPage = get().perPage
-    const filtered = get().all.filter((c) => matchesFilter(c, params))
-    const totalItems = filtered.length
-    const totalPages = Math.max(1, Math.ceil(totalItems / perPage))
-    const start = (page - 1) * perPage
-    const items = filtered.slice(start, start + perPage)
-    return { items, totalPages, totalItems, page }
-  },
-}))
+      getFiltered(params: Filters) {
+        const page = Math.max(1, Math.floor(Number(params.page) || 1))
+        const perPage = get().perPage
+        const filtered = get().all.filter((c) => matchesFilter(c, params))
+        const totalItems = filtered.length
+        const totalPages = Math.max(1, Math.ceil(totalItems / perPage))
+        const start = (page - 1) * perPage
+        const items = filtered.slice(start, start + perPage)
+        return { items, totalPages, totalItems, page }
+      },
+    }),
+    {
+      name: 'plan-countries',
+      partialize: (state) => ({ all: state.all, perPage: state.perPage }),
+    },
+  ),
+)
 
 export default useCountriesDataStore

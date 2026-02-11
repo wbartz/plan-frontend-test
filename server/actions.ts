@@ -1,5 +1,8 @@
 import { countryFields } from '@/types'
-import { getCountries as getAll } from '@yusifaliyevpro/countries'
+import {
+  getCountries as getAll,
+  getCountriesByName,
+} from '@yusifaliyevpro/countries'
 import { CountryPicker } from '@yusifaliyevpro/countries/types'
 
 export const getCountries = async (): Promise<
@@ -17,4 +20,15 @@ export const getCountries = async (): Promise<
   }
 
   return countries
+}
+
+export const getCountry = async (
+  name: string,
+): Promise<CountryPicker<typeof countryFields> | null> => {
+  const country = await getCountriesByName({
+    name: name.replace(/-/g, ' '),
+    fields: countryFields,
+  })
+
+  return country ? country[0] : null
 }

@@ -7,7 +7,7 @@ const Card = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
     <div
       ref={ref}
       className={cn(
-        'rounded-xl flex flex-col bg-white text-card-foreground shadow-custom w-full max-w-[320px]',
+        'rounded-xl flex flex-col min-h-58 bg-white text-card-foreground shadow-custom w-full max-w-[320px]',
         className,
       )}
       {...props}
@@ -27,12 +27,12 @@ const CardHeader = forwardRef<
   <div
     ref={ref}
     className={cn(
-      'flex justify-between w-full py-2 px-3 bg-secondary rounded-tl-xl rounded-tr-xl',
+      'flex justify-between items-center w-full py-2 px-3 bg-secondary rounded-tl-xl rounded-tr-xl',
       className,
     )}
     {...props}
   >
-    <h1 className="text-2xl font-bold text-white">{title}</h1>
+    <h1 className="text-[15px] font-bold text-white">{title}</h1>
     <Image src={icon} alt={title} width={36} height={36} className="w-9 h-9" />
   </div>
 ))

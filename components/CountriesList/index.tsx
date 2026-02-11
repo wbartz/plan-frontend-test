@@ -26,13 +26,13 @@ export function CountriesList() {
               `@/assets/images/${getContinentName(country.continents[0]).value}.png`,
             )}
           />
-          <CardContent className="flex flex-col items-center gap-4 flex-1 border-red-500">
+          <CardContent className="flex flex-col items-center justify-center gap-4 flex-1">
             <div className="flex items-center flex-col px-6">
               <Image
                 src={country.flags.svg}
                 alt={country.name.common}
-                width={24}
-                height={18}
+                width={36}
+                height={30}
               />
               <p className="font-bold text-lg sm:text-xl text-secondary mt-2 text-center">
                 {getCountryName(

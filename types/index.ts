@@ -22,4 +22,8 @@ export const countryFields = defineFields([
   'flags',
   'translations',
   'continents',
+  'capital',
+  'population',
+  'currencies',
+  'languages',
 ])

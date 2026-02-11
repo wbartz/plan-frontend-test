@@ -7,10 +7,10 @@ import { Skeleton } from '@/components/Skeleton'
  */
 export default function PageSkeleton() {
   return (
-    <div className="flex gap-8 flex-wrap">
+    <div className="mt-6 lg:mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {Array.from({ length: 8 }).map((_, i) => (
         <Card key={i} className="border-border/50">
-          <CardContent className="p-6 space-y-4">
+          <CardContent className="flex flex-col items-center justify-center gap-4 flex-1">
             <Skeleton className="h-6 w-40" />
             <div className="space-y-3">
               <Skeleton className="h-4 w-full" />
